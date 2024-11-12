@@ -31,7 +31,7 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
       const uploadPromises = acceptedFiles.map(async (file) => {
         if (file.size > MAX_FILE_SIZE) {
           setFiles((prevFiles) =>
-            prevFiles.filter((f) => f.name !== file.name)
+            prevFiles.filter((f) => f.name !== file.name),
           );
           return toast({
             description: (
@@ -48,21 +48,21 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
           (uploadedFile) => {
             if (uploadedFile) {
               setFiles((prevFiles) =>
-                prevFiles.filter((f) => f.name !== file.name)
+                prevFiles.filter((f) => f.name !== file.name),
               );
             }
-          }
+          },
         );
       });
       await Promise.all(uploadPromises);
     },
-    [ownerId, accountId, path, toast]
+    [ownerId, accountId, path, toast],
   );
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
     e: React.MouseEvent<HTMLImageElement>,
-    fileName: string
+    fileName: string,
   ) => {
     e.stopPropagation();
     setFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName));

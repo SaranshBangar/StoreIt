@@ -20,7 +20,7 @@ const getUserByEmail = async (email: string) => {
   const res = await databases.listDocuments(
     appwriteConfig.databaseId,
     appwriteConfig.usersCollectionId,
-    [Query.equal("email", [email])]
+    [Query.equal("email", [email])],
   );
 
   return res.total > 0 ? res.documents[0] : null;
@@ -61,7 +61,7 @@ export const createAccount = async ({
       .toUpperCase();
 
     const avatarPlaceholder = `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      initials
+      initials,
     )}&background=random&color=fff&size=128`;
 
     await databases.createDocument(
@@ -73,7 +73,7 @@ export const createAccount = async ({
         email,
         avatar: avatarPlaceholder,
         accountId,
-      }
+      },
     );
   }
 
@@ -113,7 +113,7 @@ export const getCurrentUser = async () => {
     const user = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.usersCollectionId,
-      [Query.equal("accountId", res.$id)]
+      [Query.equal("accountId", res.$id)],
     );
 
     if (user.total <= 0) {
@@ -153,9 +153,8 @@ export const signInUser = async ({ email }: { email: string }) => {
       return parseStringify({ accountId: existingUser.accountId });
     }
 
-    return parseStringify({ accountId: null, error: 'User not found' });
-  }
-  catch (err) {
+    return parseStringify({ accountId: null, error: "User not found" });
+  } catch (err) {
     handleError(err, "Failed to sign in user");
   }
 };

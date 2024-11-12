@@ -81,6 +81,7 @@ export const sortTypes = [
   },
 ];
 
-export const avatarPlaceholder = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
+export const avatarPlaceholder =
+  "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
 
 export const MAX_FILE_SIZE = 50 * 1024 * 1024;

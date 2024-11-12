@@ -31,7 +31,7 @@ const OTPModal = ({
   accountId: string;
   email: string;
 }) => {
-    const router = useRouter();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +41,11 @@ const OTPModal = ({
     setIsLoading(true);
 
     try {
-        const sessionId = await verifyOTP({ accountId, password });
+      const sessionId = await verifyOTP({ accountId, password });
 
-        if (sessionId) {
-            router.push("/")
-        }
+      if (sessionId) {
+        router.push("/");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -108,8 +108,15 @@ const OTPModal = ({
               )}
             </AlertDialogAction>
             <div className="subtitle-2 mt-2 text-center text-light-100">
-                Did&apos;t receive the OTP?
-                <Button type="button" variant="link" className="pl-1 text-brand" onClick={handleResendOTP}>Click to resend</Button>
+              Did&apos;t receive the OTP?
+              <Button
+                type="button"
+                variant="link"
+                className="pl-1 text-brand"
+                onClick={handleResendOTP}
+              >
+                Click to resend
+              </Button>
             </div>
           </div>
         </AlertDialogFooter>

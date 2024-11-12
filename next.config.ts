@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: "100MB",
-    }
+    },
   },
-  images :{
+  images: {
     remotePatterns: [
       {
         protocol: "https",
@@ -20,8 +20,8 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "ui-avatars.com",
       },
-    ]
-  }
+    ],
+  },
 };
 
 export default nextConfig;

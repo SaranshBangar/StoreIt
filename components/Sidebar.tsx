@@ -36,45 +36,47 @@ const Sidebar = ({ fullName, avatar, email }: SidebarNavProps) => {
         />
       </Link>
 
-        <nav className="sidebar-nav">
-          <ul className="flex flex-1 flex-col gap-6">
-            {sidebarNavItems.map(({ name, icon, url }) => (
-              <Link key={name} href={url} className="lg:w-full">
-                <li
+      <nav className="sidebar-nav">
+        <ul className="flex flex-1 flex-col gap-6">
+          {sidebarNavItems.map(({ name, icon, url }) => (
+            <Link key={name} href={url} className="lg:w-full">
+              <li
+                className={cn(
+                  "sidebar-nav-item",
+                  pathname === url && "shad-active",
+                )}
+              >
+                <Image
+                  src={icon}
+                  alt={name}
+                  width={24}
+                  height={24}
                   className={cn(
-                    "sidebar-nav-item",
-                    (pathname === url) && "shad-active"
+                    "nav-icon",
+                    pathname === url && "nav-icon-active",
                   )}
-                >
-                  <Image
-                    src={icon}
-                    alt={name}
-                    width={24} 
-                    height={24}
-                    className={cn("nav-icon", (pathname === url) && "nav-icon-active")}
-                  />
-                  <p className="hidden lg:block">{name}</p>
-                </li>
-              </Link>
-            ))}
-          </ul>
-        </nav>
+                />
+                <p className="hidden lg:block">{name}</p>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </nav>
 
-        <div className="sidebar-user-info">
-          <Image
-            src={avatar || avatarPlaceholder}
-            alt="avatar"
-            width={44}
-            height={44}
-            className="sidebar-user-avatar"
-          />
+      <div className="sidebar-user-info">
+        <Image
+          src={avatar || avatarPlaceholder}
+          alt="avatar"
+          width={44}
+          height={44}
+          className="sidebar-user-avatar"
+        />
 
-          <div className="hidden lg:block">
-            <p className="subtitle-2 capitalize">{fullName}</p>
-            <p className="caption">{email}</p>
-          </div>
+        <div className="hidden lg:block">
+          <p className="subtitle-2 capitalize">{fullName}</p>
+          <p className="caption">{email}</p>
         </div>
-
+      </div>
     </aside>
   );
 };

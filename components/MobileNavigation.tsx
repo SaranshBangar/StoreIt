@@ -79,7 +79,7 @@ const MobileNavigation = ({
                   <li
                     className={cn(
                       "mobile-nav-item",
-                      pathname === url && "shad-active"
+                      pathname === url && "shad-active",
                     )}
                   >
                     <Image
@@ -89,7 +89,7 @@ const MobileNavigation = ({
                       height={24}
                       className={cn(
                         "nav-icon",
-                        pathname === url && "nav-icon-active"
+                        pathname === url && "nav-icon-active",
                       )}
                     />
                     <p>{name}</p>
@@ -102,18 +102,19 @@ const MobileNavigation = ({
           <Separator className="mt-4 bg-light-200/20" />
 
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader
-              ownerId={ownerId}
-              accountId={accountId}
-            />
+            <FileUploader ownerId={ownerId} accountId={accountId} />
 
-            <Button type="submit" className="mobile-sign-out-button" onClick={() => {}}>
+            <Button
+              type="submit"
+              className="mobile-sign-out-button"
+              onClick={() => {}}
+            >
               <Image
                 src="/assets/icons/logout.svg"
                 alt="logout"
                 width={24}
                 height={24}
-                onClick={async() => await signOutUser()}            
+                onClick={async () => await signOutUser()}
               />
               <p>Logout</p>
             </Button>
